@@ -9,8 +9,8 @@ const W = 2048, H = 1024;
 
 type Painter = (g: CanvasRenderingContext2D, w: number, h: number) => void;
 
-const GOTHIC = `"Yu Gothic UI", "Yu Gothic", "Meiryo", "Hiragino Sans", "Noto Sans CJK JP", "Noto Sans JP", sans-serif`;
-const MINCHO = `"Yu Mincho", "Hiragino Mincho ProN", "MS Mincho", "Noto Serif CJK JP", serif`;
+const GOTHIC = `"Noto Sans KR", "Malgun Gothic", "Apple SD Gothic Neo", "Yu Gothic UI", "Yu Gothic", "Meiryo", "Hiragino Sans", "Noto Sans CJK JP", "Noto Sans JP", sans-serif`;
+const MINCHO = `"Noto Serif KR", "Malgun Gothic", "Yu Mincho", "Hiragino Mincho ProN", "MS Mincho", "Noto Serif CJK JP", serif`;
 
 function text(g: CanvasRenderingContext2D, s: string, x: number, y: number, size: number, color: string, font = GOTHIC, weight = 700) {
   g.font = `${weight} ${size}px ${font}`;
@@ -50,24 +50,24 @@ const PAINT: Record<string, [number, number, number, number, Painter]> = {
   dagashi: [0, 0, 512, 160, (g, w, h) => {
     g.fillStyle = "#f4ede0"; g.fillRect(0, 0, w, h);
     g.strokeStyle = "#b8302c"; g.lineWidth = 10; g.strokeRect(8, 8, w - 16, h - 16);
-    text(g, "だがし", w * 0.42, h * 0.52, 96, "#c0302a");
-    text(g, "やまだ屋", w * 0.84, h * 0.52, 34, "#3a3230", MINCHO);
+    text(g, "과자", w * 0.42, h * 0.52, 96, "#c0302a");
+    text(g, "야마다 가게", w * 0.84, h * 0.52, 22, "#3a3230", MINCHO);
     grime(g, w, h);
   }],
   ramen: [512, 0, 512, 160, (g, w, h) => {
     g.fillStyle = "#b82a26"; g.fillRect(0, 0, w, h);
-    text(g, "ラーメン", w * 0.5, h * 0.5, 100, "#fff6e6");
+    text(g, "라멘", w * 0.5, h * 0.5, 100, "#fff6e6");
     grime(g, w, h, 0.7);
   }],
   closed: [1024, 0, 512, 160, (g, w, h) => {
     g.fillStyle = "#8fa3ad"; g.fillRect(0, 0, w, h);
-    text(g, "たなか商店", w * 0.5, h * 0.5, 88, "rgba(240,236,226,0.8)", MINCHO);
+    text(g, "다나카 상점", w * 0.5, h * 0.5, 72, "rgba(240,236,226,0.8)", MINCHO);
     g.fillStyle = "rgba(150,110,70,0.35)"; g.fillRect(0, 0, w, h);
     grime(g, w, h, 2);
   }],
   tabako: [1536, 0, 256, 160, (g, w, h) => {
     g.fillStyle = "#c83a32"; g.fillRect(0, 0, w, h);
-    text(g, "たばこ", w * 0.5, h * 0.5, 64, "#ffffff");
+    text(g, "담배", w * 0.5, h * 0.5, 64, "#ffffff");
   }],
   kori: [1792, 0, 256, 256, (g, w, h) => {
     g.fillStyle = "#fbfaf4"; g.fillRect(0, 0, w, h);
@@ -75,12 +75,12 @@ const PAINT: Record<string, [number, number, number, number, Painter]> = {
     g.beginPath(); g.moveTo(0, h * 0.78);
     for (let x = 0; x <= w; x += 8) g.lineTo(x, h * 0.78 + Math.sin(x / 18) * 10);
     g.lineTo(w, h); g.lineTo(0, h); g.fill();
-    text(g, "氷", w * 0.5, h * 0.42, 150, "#d4302c", MINCHO, 900);
+    text(g, "빙수", w * 0.5, h * 0.42, 90, "#d4302c", MINCHO, 900);
   }],
   noren: [0, 160, 512, 256, (g, w, h) => {
     g.fillStyle = "#2a3558"; g.fillRect(0, 0, w, h);
     g.fillStyle = "#1f2846"; for (let i = 1; i < 4; i++) g.fillRect((w * i) / 4 - 3, h * 0.25, 6, h);
-    text(g, "そば", w * 0.5, h * 0.55, 150, "#f4efe4", MINCHO, 900);
+    text(g, "소바", w * 0.5, h * 0.55, 150, "#f4efe4", MINCHO, 900);
   }],
   tomare: [512, 160, 256, 256, (g, w, h) => {
     g.fillStyle = "rgba(0,0,0,0)"; g.clearRect(0, 0, w, h);
@@ -88,34 +88,34 @@ const PAINT: Record<string, [number, number, number, number, Painter]> = {
     g.beginPath(); g.moveTo(8, 10); g.lineTo(w - 8, 10); g.lineTo(w / 2, h - 10); g.closePath(); g.fill();
     g.fillStyle = "#c8262a";
     g.beginPath(); g.moveTo(26, 22); g.lineTo(w - 26, 22); g.lineTo(w / 2, h - 36); g.closePath(); g.fill();
-    text(g, "止まれ", w / 2, h * 0.3, 50, "#ffffff");
+    text(g, "정지", w / 2, h * 0.3, 50, "#ffffff");
   }],
   bus: [768, 160, 256, 256, (g, w, h) => {
     g.fillStyle = "#e8e6e0"; g.fillRect(0, 0, w, h);
     g.fillStyle = "#ffffff"; g.beginPath(); g.arc(w / 2, h / 2, w * 0.47, 0, 7); g.fill();
     g.strokeStyle = "#2a5aa8"; g.lineWidth = 16; g.beginPath(); g.arc(w / 2, h / 2, w * 0.42, 0, 7); g.stroke();
-    text(g, "バス停", w / 2, h * 0.4, 50, "#2a5aa8");
-    text(g, "田中口", w / 2, h * 0.63, 40, "#303030");
+    text(g, "정류장", w / 2, h * 0.4, 50, "#2a5aa8");
+    text(g, "다나카 입구", w / 2, h * 0.63, 30, "#303030");
   }],
   phone: [1024, 160, 512, 96, (g, w, h) => {
     g.fillStyle = "#3c8a52"; g.fillRect(0, 0, w, h);
-    text(g, "公衆電話", w * 0.5, h * 0.52, 64, "#ffffff");
+    text(g, "공중전화", w * 0.5, h * 0.52, 64, "#ffffff");
   }],
   yasai: [1024, 256, 512, 160, (g, w, h) => {
     g.fillStyle = "#c9a776"; g.fillRect(0, 0, w, h);
-    text(g, "やさい", w * 0.36, h * 0.5, 84, "#2d5a2a", GOTHIC, 800);
-    text(g, "100円", w * 0.78, h * 0.5, 58, "#b3302a", GOTHIC, 800);
+    text(g, "채소", w * 0.36, h * 0.5, 84, "#2d5a2a", GOTHIC, 800);
+    text(g, "100엔", w * 0.78, h * 0.5, 58, "#b3302a", GOTHIC, 800);
     grime(g, w, h, 1.2);
   }],
   sake: [1536, 160, 128, 512, (g, w, h) => {
     g.fillStyle = "#f2ece0"; g.fillRect(0, 0, w, h);
-    vtext(g, "酒たばこ", w / 2, 70, 118, 96, "#2a2624", MINCHO);
+    vtext(g, "술담배", w / 2, 70, 118, 96, "#2a2624", MINCHO);
     grime(g, w, h);
   }],
   shrine: [1664, 256, 128, 384, (g, w, h) => {
     g.fillStyle = "#2c2a26"; g.fillRect(0, 0, w, h);
     g.strokeStyle = "#c8a64a"; g.lineWidth = 6; g.strokeRect(8, 8, w - 16, h - 16);
-    vtext(g, "稲荷社", w / 2, 80, 110, 88, "#e9d59a", MINCHO);
+    vtext(g, "이나리", w / 2, 80, 110, 88, "#e9d59a", MINCHO);
   }],
   shutter: [0, 416, 512, 384, (g, w, h) => {
     g.fillStyle = "#a9adae"; g.fillRect(0, 0, w, h);
@@ -124,7 +124,7 @@ const PAINT: Record<string, [number, number, number, number, Painter]> = {
       g.fillStyle = "#c4c7c6"; g.fillRect(0, y + 4, w, 2);
     }
     g.fillStyle = "rgba(140,80,40,0.25)"; g.fillRect(0, h * 0.8, w, h * 0.2);
-    text(g, "準備中", w * 0.5, h * 0.4, 64, "rgba(60,60,64,0.55)");
+    text(g, "준비 중", w * 0.5, h * 0.4, 64, "rgba(60,60,64,0.55)");
     grime(g, w, h, 2);
   }],
   vendDrink: [512, 416, 256, 512, (g, w, h) => {
@@ -139,14 +139,14 @@ const PAINT: Record<string, [number, number, number, number, Painter]> = {
         g.fillStyle = r === 2 ? "#d8342c" : "#2a64c0"; g.fillRect(22 + c * 37, 92 + r * 100, 26, 8);
       }
     }
-    text(g, "つめたい", w * 0.5, 332, 30, "#2a64c0");
+    text(g, "차가운 음료", w * 0.5, 332, 25, "#2a64c0");
     g.fillStyle = "#2a2e34"; g.fillRect(40, 380, w - 80, 70);
     g.fillStyle = "#c8ccd0"; g.fillRect(w - 70, 350, 30, 20);
   }],
   vendIce: [768, 416, 256, 512, (g, w, h) => {
     g.fillStyle = "#f7f0f4"; g.fillRect(0, 0, w, h);
     g.fillStyle = "#e8508a"; g.fillRect(0, 0, w, 90);
-    text(g, "アイス", w * 0.5, 46, 60, "#ffffff");
+    text(g, "아이스", w * 0.5, 46, 60, "#ffffff");
     const cols = ["#f7d2e0", "#c8e6f6", "#fbe7a8", "#d6f0c8", "#f4c0a8"];
     for (let r = 0; r < 3; r++)
       for (let c = 0; c < 4; c++) {
