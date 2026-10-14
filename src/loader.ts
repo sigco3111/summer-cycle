@@ -6,16 +6,16 @@
 export type Stage = "sky" | "trees" | "grass" | "rice" | "houses" | "poles" | "road" | "rider" | "paint" | "cicadas";
 
 const LINES: Record<Stage, string> = {
-  sky: "painting the clouds…",
-  trees: "growing the camphor trees…",
-  grass: "combing the summer grass…",
-  rice: "planting the rice…",
-  houses: "raising the old wooden houses…",
-  poles: "stringing the power lines…",
-  road: "laying the country road…",
-  rider: "pumping up the tyres…",
-  paint: "mixing the watercolours…",
-  cicadas: "listening for cicadas…",
+  sky: "구름을 그리고 있습니다…",
+  trees: "녹나무를 키우고 있습니다…",
+  grass: "여름 풀밭을 다듬고 있습니다…",
+  rice: "벼를 심고 있습니다…",
+  houses: "오래된 목조 가게를 세우고 있습니다…",
+  poles: "전선을 연결하고 있습니다…",
+  road: "시골길을 만들고 있습니다…",
+  rider: "자전거 타이어에 바람을 넣고 있습니다…",
+  paint: "수채화 물감을 섞고 있습니다…",
+  cicadas: "매미 소리를 준비하고 있습니다…",
 };
 
 const DISSOLVE = 1.15;
@@ -68,10 +68,10 @@ export class Loader {
     this.go = go;
     this.el.classList.add("go");
     this.pendingText = null;
-    this.show("click or press any key to ride", true);
+    this.show("클릭하거나 아무 키나 눌러 출발하세요", true);
     const hint = this.el.querySelector<HTMLElement>(".hint");
     const auto = new URLSearchParams(location.search).has("autoplay");
-    if (hint && !auto) hint.innerHTML = "<b>W</b> pedal &nbsp;·&nbsp; <b>Shift</b> sprint &nbsp;·&nbsp; <b>A D</b> steer &nbsp;·&nbsp; <b>S</b> brake &nbsp;·&nbsp; <b>V</b> view &nbsp;·&nbsp; <b>mouse</b> look &nbsp;·&nbsp; <b>B</b> bell &nbsp;·&nbsp; <b>Esc</b> pause";
+    if (hint && !auto) hint.innerHTML = "<b>W</b> 페달 &nbsp;·&nbsp; <b>Shift</b> 전력 질주 &nbsp;·&nbsp; <b>A D</b> 방향 조절 &nbsp;·&nbsp; <b>S</b> 브레이크 &nbsp;·&nbsp; <b>V</b> 시점 전환 &nbsp;·&nbsp; <b>마우스</b> 둘러보기 &nbsp;·&nbsp; <b>B</b> 벨 &nbsp;·&nbsp; <b>Esc</b> 일시정지";
   }
 
   /** Watercolour dissolve: holes bloom outward from the middle through the paper, pigment pooling at the edges. */
@@ -230,7 +230,7 @@ export function fatal(title: string, detail: string): void {
   el.style.cssText =
     "position:fixed;inset:0;z-index:100;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;" +
     "background:radial-gradient(ellipse at 50% 40%,#f6efdd 0%,#efe3c8 70%,#e6d6b6 100%);color:#2f3944;text-align:center;padding:24px;" +
-    'font-family:"Palatino Linotype",Palatino,Georgia,serif;';
+    'font-family:"Palatino Linotype",Palatino,Georgia,"Noto Serif KR","Malgun Gothic",serif;';
   const h = document.createElement("h2");
   h.textContent = title;
   h.style.cssText = "margin:0;font-weight:400;font-size:28px;letter-spacing:0.08em;";
@@ -238,7 +238,7 @@ export function fatal(title: string, detail: string): void {
   p.textContent = detail;
   p.style.cssText = "margin:0;max-width:520px;font-size:16px;line-height:1.6;color:#6d675d;font-style:italic;";
   const b = document.createElement("button");
-  b.textContent = "Reload";
+  b.textContent = "새로고침";
   b.style.cssText =
     "margin-top:8px;padding:8px 26px;border:1px solid #9a8f7d;border-radius:18px;background:#f8f1e2;color:#2f3944;" +
     "font:inherit;font-size:15px;letter-spacing:0.12em;cursor:pointer;";
