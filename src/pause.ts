@@ -10,16 +10,16 @@ const TAP = 0.4; // s: shorter Esc presses are taps
 const HOLD = 0.5; // s: with keyboard lock, release the mouse once Esc has been held this long
 
 const CONTROLS: [string, string][] = [
-  ["W  S", "pedal · brake"],
-  ["A  D", "steer"],
-  ["Shift", "sprint · run"],
-  ["Mouse", "look around"],
-  ["F", "walk · ride"],
-  ["C", "cinematic cameras"],
-  ["V", "first person"],
-  ["T", "time of day"],
-  ["B", "bell"],
-  ["M", "mute"],
+  ["W  S", "페달 · 브레이크"],
+  ["A  D", "방향 조절"],
+  ["Shift", "전력 질주 · 달리기"],
+  ["Mouse", "둘러보기"],
+  ["F", "내리기 · 타기"],
+  ["C", "영화 같은 카메라"],
+  ["V", "1인칭 / 3인칭"],
+  ["T", "시간대 변경"],
+  ["B", "벨"],
+  ["M", "음소거"],
 ];
 
 type Nav = Navigator & { keyboard?: { lock?: (codes?: string[]) => Promise<void>; unlock?: () => void } };
@@ -42,14 +42,14 @@ export class Pause {
     this.el = document.createElement("div");
     this.el.id = "pause";
     this.el.setAttribute("role", "dialog");
-    this.el.setAttribute("aria-label", "Paused");
+    this.el.setAttribute("aria-label", "일시정지");
     this.el.innerHTML = `<div class="pgrain"></div><div class="pcard">
-      <div class="ptitle">Summer Cycle</div>
-      <div class="phead">Paused</div>
+      <div class="ptitle">여름 자전거</div>
+      <div class="phead">일시정지</div>
       <div class="prule"></div>
       <dl class="pkeys">${CONTROLS.map(([k, v]) => `<dt>${k}</dt><dd>${v}</dd>`).join("")}</dl>
-      <div class="pgo">click to resume</div>
-      <div class="pnote"><b>Esc</b> · <b>Enter</b> · <b>Space</b> also resume &nbsp;—&nbsp; hold <b>Esc</b> to free the mouse</div>
+      <div class="pgo">클릭하면 계속합니다</div>
+      <div class="pnote"><b>Esc</b> · <b>Enter</b> · <b>Space</b>로도 계속할 수 있습니다 · <b>Esc</b>를 길게 누르면 마우스를 해제합니다</div>
     </div>`;
     document.body.appendChild(this.el);
     this.el.addEventListener("pointerdown", (e) => {
@@ -119,7 +119,7 @@ export class Pause {
       return;
     }
     if (!this.paused) return;
-    // Paused: nothing reaches the game. Enter / Space resume (they are user gestures, so re-lock).
+    // 일시정지: nothing reaches the game. Enter / Space resume (they are user gestures, so re-lock).
     e.preventDefault();
     e.stopImmediatePropagation();
     if (!e.repeat && (e.code === "Enter" || e.code === "NumpadEnter" || e.code === "Space")) this.resume(true);
