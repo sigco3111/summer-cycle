@@ -1,27 +1,27 @@
 <!doctype html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ccircle cx='8' cy='8' r='7' fill='%23f2c028'/%3E%3C/svg%3E" />
-    <title>Summer Cycle — a summer afternoon on two wheels</title>
-    <meta name="description" content="A Ghibli- and Shinkai-style bicycle ride through the Japanese countryside at four times of day, with every mesh, texture and sound generated in code. Plays in your browser." />
+    <title>여름 자전거 - Summer Cycle</title>
+    <meta name="description" content="코드로 생성한 일본 시골 풍경을 자전거로 달리는 한국어 3D 탐험. 네 가지 시간대의 빛과 소리를 감상하세요." />
     <meta name="theme-color" content="#f3ead6" />
     <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Summer Cycle" />
-    <meta property="og:title" content="Summer Cycle" />
-    <meta property="og:description" content="A Ghibli- and Shinkai-style bicycle ride through the Japanese countryside at four times of day, with every mesh, texture and sound generated in code." />
-    <meta property="og:url" content="https://starknightt.github.io/summer-cycle/" />
-    <meta property="og:image" content="https://starknightt.github.io/summer-cycle/og.jpg" />
+    <meta property="og:site_name" content="여름 자전거 - Summer Cycle" />
+    <meta property="og:title" content="여름 자전거 - Summer Cycle" />
+    <meta property="og:description" content="코드로 생성한 일본 시골 풍경을 자전거로 달리는 한국어 3D 탐험." />
+    <meta property="og:url" content="https://sigco3111.github.io/summer-cycle/" />
+    <meta property="og:image" content="https://sigco3111.github.io/summer-cycle/og.jpg" />
     <meta property="og:image:type" content="image/jpeg" />
     <meta property="og:image:width" content="1280" />
     <meta property="og:image:height" content="640" />
-    <meta property="og:image:alt" content="A girl cycling past flooded rice paddies at sunset, under the title Summer Cycle" />
+    <meta property="og:image:alt" content="해질 무렵 논 옆을 자전거로 달리는 소녀와 Summer Cycle 제목" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Summer Cycle" />
-    <meta name="twitter:description" content="A Ghibli- and Shinkai-style bicycle ride through the Japanese countryside at four times of day, with every mesh, texture and sound generated in code." />
-    <meta name="twitter:image" content="https://starknightt.github.io/summer-cycle/og.jpg" />
-    <meta name="twitter:image:alt" content="A girl cycling past flooded rice paddies at sunset, under the title Summer Cycle" />
+    <meta name="twitter:title" content="여름 자전거 - Summer Cycle" />
+    <meta name="twitter:description" content="코드로 생성한 일본 시골 풍경을 자전거로 달리는 한국어 3D 탐험." />
+    <meta name="twitter:image" content="https://sigco3111.github.io/summer-cycle/og.jpg" />
+    <meta name="twitter:image:alt" content="해질 무렵 논 옆을 자전거로 달리는 소녀와 Summer Cycle 제목" />
     <style>
       html, body { margin: 0; height: 100%; overflow: hidden; background: #f4ecd8; }
       canvas { display: block; }
@@ -42,7 +42,7 @@
         backdrop-filter: blur(3px) saturate(0.85); -webkit-backdrop-filter: blur(3px) saturate(0.85);
         opacity: 0; visibility: hidden; transition: opacity 0.35s ease, visibility 0s linear 0.35s;
         cursor: pointer; user-select: none; -webkit-user-select: none; color: #2f3944;
-        font-family: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+        font-family: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, "Noto Serif KR", "Malgun Gothic", serif;
       }
       #pause.on { opacity: 1; visibility: visible; transition: opacity 0.35s ease; }
       #pause .pgrain {
@@ -54,7 +54,7 @@
       #pause .ptitle { font-size: clamp(14px, 0.85vw, 17px); letter-spacing: 0.42em; text-indent: 0.42em; color: #6d675d; text-transform: uppercase; }
       #pause .phead {
         margin-top: 10px; font-size: clamp(40px, 3.6vw, 64px); font-style: italic; letter-spacing: 0.1em; line-height: 1.1;
-        font-family: "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif; opacity: 0.9; text-shadow: 0 0 1px rgba(47, 57, 68, 0.3);
+        font-family: "Palatino Linotype", Palatino, "Book Antiqua", Georgia, "Noto Serif KR", "Malgun Gothic", serif; opacity: 0.9; text-shadow: 0 0 1px rgba(47, 57, 68, 0.3);
       }
       #pause .prule { margin: 18px 0 20px; width: 64px; height: 1px; background: repeating-linear-gradient(90deg, rgba(120, 104, 80, 0.45) 0 7px, transparent 7px 13px); }
       #pause .pkeys { display: grid; grid-template-columns: auto auto; gap: 0.5em 1.5em; margin: 0; font-size: clamp(15px, 0.95vw, 19px); }
@@ -70,7 +70,7 @@
         --p: 0; --track: min(760px, 72vw); --s: 0.8; --ink: #2e2a33;
         position: fixed; inset: 0; z-index: 20; overflow: hidden; background: #f4ecd8;
         cursor: default; user-select: none; -webkit-user-select: none;
-        font-family: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+        font-family: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, "Noto Serif KR", "Malgun Gothic", serif;
       }
       #loader.go { cursor: pointer; }
       #wash { position: absolute; inset: 0; width: 100%; height: 100%; }
@@ -201,7 +201,7 @@
     </style>
   </head>
   <body>
-    <div id="loader" aria-label="Loading">
+    <div id="loader" aria-label="불러오는 중">
       <canvas id="wash"></canvas>
       <script>
         // Watercolour wash, painted small and stretched (the soft upscale is the look). Runs before the bundle loads.
@@ -305,8 +305,8 @@
       <div class="fly"><i></i><i></i></div>
 
       <div id="stage">
-        <div class="title"><h1>Summer Cycle</h1><div class="seal">夏</div></div>
-        <p class="sub"><span class="jp">夏の道</span><span class="rule"></span><span class="en">a summer road</span></p>
+        <div class="title"><h1>여름 자전거</h1><div class="seal">夏</div></div>
+        <p class="sub"><span class="jp">夏の道</span><span class="rule"></span><span class="en">여름날의 시골길</span></p>
         <div class="scene">
           <div class="guide"></div>
           <div class="clip"><div>
@@ -426,7 +426,7 @@
             </div>
           </div>
         </div>
-        <div class="lines"><span class="on">unrolling the paper…</span><span></span></div>
+        <div class="lines"><span class="on">그림을 펼치고 있습니다…</span><span></span></div>
         <div class="hint"></div>
       </div>
     </div>
