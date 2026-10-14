@@ -162,7 +162,7 @@ export class Explore {
     showHint: boolean,
   ) {
     this.hint = document.createElement("div");
-    this.hint.textContent = "F — ride";
+    this.hint.textContent = "F · 자전거 타기";
     Object.assign(this.hint.style, {
       position: "fixed",
       left: "50%",
