@@ -31,19 +31,19 @@ const SKIP_INTRO = params.has("skipintro") && params.get("skipintro") !== "0";
 const W_BOOT = 0.03, W_SKY = 0.04, W_PROTOS = 0.05, W_CHUNKS = 0.06, W_RIDER = 0.01, W_COMPILE = 0.15, W_DRAW = 0.6, W_WARM = 0.06;
 
 if (!document.createElement("canvas").getContext("webgl2")) {
-  fatal("This browser can't draw the ride", "Summer Cycle needs WebGL 2. Try an up-to-date Chrome, Edge, Firefox or Safari, and check that hardware acceleration is turned on.");
+  fatal("이 브라우저에서는 실행할 수 없습니다", "여름 자전거에는 WebGL 2가 필요합니다. 최신 브라우저와 하드웨어 가속 설정을 확인해 주세요. Chrome 또는 Edge를 권장합니다.");
   throw new Error("WebGL2 unavailable");
 }
 let renderer: THREE.WebGLRenderer;
 try {
   renderer = new THREE.WebGLRenderer({ antialias: false, powerPreference: "high-performance", stencil: false });
 } catch (e) {
-  fatal("The graphics couldn't start", "Your browser refused to create a WebGL 2 context. Closing other 3D tabs or restarting the browser usually helps.");
+  fatal("그래픽을 시작하지 못했습니다", "브라우저에서 WebGL 2를 시작하지 못했습니다. 다른 3D 탭을 닫거나 브라우저를 다시 시작해 주세요.");
   throw e;
 }
 renderer.domElement.addEventListener("webglcontextlost", (e) => {
   e.preventDefault();
-  fatal("The graphics took a break", "The GPU reset or the browser reclaimed the 3D context. Reload to keep riding.");
+  fatal("그래픽 연결이 끊겼습니다", "GPU가 초기화되었거나 브라우저가 3D 연결을 해제했습니다. 새로고침하면 다시 탈 수 있습니다.");
 });
 // Render targets and programs would all need rebuilding: a clean reload is the reliable path.
 renderer.domElement.addEventListener("webglcontextrestored", () => location.reload());
@@ -231,7 +231,7 @@ addEventListener("pointermove", (e) => {
   if (document.pointerLockElement === canvasEl && !explore.onFoot) chase.lookBy(e.movementX, e.movementY);
 });
 const lookHint = document.createElement("div");
-lookHint.textContent = "click to look around";
+lookHint.textContent = "클릭하면 주변을 둘러볼 수 있습니다";
 Object.assign(lookHint.style, {
   position: "fixed",
   left: "50%",
